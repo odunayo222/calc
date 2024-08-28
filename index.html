@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+        <form name="calc">
+            <div class="ola">
+            <input name="display" disabled id="display" class="display">
+            <br><br>
+            <table>
+                <tr>
+                    <td><input type="button" name="C" value="⌫" onclick="calc.display.value = calc.display.value.slice(0,calc.display.value.length-1)" id="c"></td>
+                    <td><input type="button" name="AC" value="AC" onclick="calc.display.value = ' ' " id="ac"></td>
+                        
+                </tr>
+                <tr>
+                    <td><input type="button" name="|x|" value="|x|" onclick="calc.display.value =  (Math.abs(calc.display.value))"></td>
+                    <td><input type="button" name="%" value="%" onclick="calc.display.value = calc.display.value/100"></td>
+                    <td><input type="button" name="^" value="^" onclick="calc.display.value += '**'"></td>
+                <td><input type="button" name="+/-" value="+/-" onclick="calc.display.value = calc.display.value*-1"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="asin" value="asin" onclick="calc.display.value = (Math.asin(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
+                    <td><input type="button" name="acos" value="acos" onclick="calc.display.value = (Math.acos(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
+                    <td><input type="button" name="atan" value="atan" onclick="calc.display.value = (Math.atan(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
+                    <td><input type="button" name="π" value="π" onclick="calc.display.value = Math.PI * calc.display.value"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="sin" value="sin" onclick="calc.display.value =  (Math.sin(calc.display.value * Math.PI/180)).toFixed(9)"></td>
+                    <td><input type="button" name="cos" value="cos" onclick="calc.display.value = (Math.cos(calc.display.value * Math.PI/180)).toFixed(9)"></td>
+                    <td><input type="button" name="tan" value="tan" onclick="calc.display.value = (Math.tan(calc.display.value * Math.PI/180)).toFixed(9)"></td>
+                    <td><input type="button" name="1/x" value="1/x" onclick="calc.display.value =  1/calc.display.value"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="√x" value="√x" onclick="calc.display.value = (Math.sqrt(calc.display.value)).toFixed(9)"></td>
+                    <td><input type="button" name="x²" value="x²" onclick="calc.display.value = (Math.pow(calc.display.value, 2)).toFixed(9)"></td>
+                    <td><input type="button" name="∛x" value="∛x" onclick="calc.display.value = (Math.cbrt(calc.display.value)).toFixed(9)"></td>
+                    <td><input type="button" name="x³" value="x³" onclick="calc.display.value = (Math.pow(calc.display.value, 3)).toFixed(9)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="(" value="(" onclick="calc.display.value += '('"></td>
+                    <td><input type="button" name=")" value=")" onclick="calc.display.value += ')'"></td>
+                    <td><input type="button" name="log2" value="log2" onclick="calc.display.value = ((Math.log2(calc.display.value))).toFixed(9)"></td>
+                    <td><input type="button" name="log" value="log" onclick="calc.display.value = (Math.log10(calc.display.value)).toFixed(9)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="1" value="1" onclick="calc.display.value += '1'"></td>
+                    <td><input type="button" name="2" value="2" onclick="calc.display.value += '2'"></td>
+                    <td><input type="button" name="3" value="3" onclick="calc.display.value += '3'"></td>
+                    <td><input type="button" name="+" value="+" onclick="calc.display.value += '+'"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="4" value="4" onclick="calc.display.value += '4'"></td>
+                    <td><input type="button" name="5" value="5" onclick="calc.display.value += '5'"></td>
+                    <td><input type="button" name="6" value="6" onclick="calc.display.value += '6'"></td>
+                    <td><input type="button" name="-" value="-" onclick="calc.display.value += '-'"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="7" value="7" onclick="calc.display.value += '7'"></td>
+                    <td><input type="button" name="8" value="8" onclick="calc.display.value += '8'"></td>
+                    <td><input type="button" name="9" value="9" onclick="calc.display.value += '9'"></td>
+                    <td><input type="button" name="x" value="x" onclick="calc.display.value += '*'"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" name="." value="." onclick="calc.display.value += '.' "></td>
+                    <td><input type="button" name="0" value="0" onclick="calc.display.value += '0'"></td>
+                    <td><input type="button" name="=" value="=" onclick="calc.display.value = eval(calc.display.value)"></td>
+                    <td><input type="button" name="/" value="/" onclick="calc.display.value += '/'"></td>
+                </tr>
+    
+                
+            </table>
+            </div>
+        </form>
+        </div>
+    </body>
+</html>
