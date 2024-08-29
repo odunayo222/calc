@@ -4,21 +4,26 @@
     <head>
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="theme">
+            <input type="button" value="Dark" id="dark">
+            <input type="button" value="Light" id="light">
+        </div>
+        <div class="container" id="container">
         <form name="calc">
             <div class="ola">
             <input name="display" disabled id="display" class="display">
             <br><br>
             <table>
                 <tr>
-                    <td><input type="button" name="C" value="⌫" onclick="calc.display.value = calc.display.value.slice(0,calc.display.value.length-1)" id="c"></td>
+                    <td><input style="font-family: Arial, Verdana, Geneva, Tahoma, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;" type="button" name="C" value="⌫" onclick="calc.display.value = calc.display.value.slice(0,calc.display.value.length-1)" id="c"></td>
                     <td><input type="button" name="AC" value="AC" onclick="calc.display.value = ' ' " id="ac"></td>
                         
                 </tr>
                 <tr>
-                    <td><input type="button" name="|x|" value="|x|" onclick="calc.display.value =  (Math.abs(calc.display.value))"></td>
+                    <td><input type="button" name="|x|" value="|x|" onclick="calc.display.value = 'abs (' + calc.display.value+ ') = '+ Math.abs(calc.display.value)"></td>
                     <td><input type="button" name="%" value="%" onclick="calc.display.value = calc.display.value/100"></td>
                     <td><input type="button" name="^" value="^" onclick="calc.display.value += '**'"></td>
                 <td><input type="button" name="+/-" value="+/-" onclick="calc.display.value = calc.display.value*-1"></td>
@@ -44,7 +49,7 @@
                 <tr>
                     <td><input type="button" name="(" value="(" onclick="calc.display.value += '('"></td>
                     <td><input type="button" name=")" value=")" onclick="calc.display.value += ')'"></td>
-                    <td><input type="button" name="log2" value="log2" onclick="calc.display.value = ((Math.log2(calc.display.value))).toFixed(9)"></td>
+                    <td><input type="button" name="log2" value="log2" onclick="calc.display.value = 'log2 ' + calc.display.value + ' = '+ (Math.log2(calc.display.value)).toFixed(9)"></td>
                     <td><input type="button" name="log" value="log" onclick="calc.display.value = (Math.log10(calc.display.value)).toFixed(9)"></td>
                 </tr>
                 <tr>
@@ -78,4 +83,22 @@
         </form>
         </div>
     </body>
+    <script>
+        $(document).ready(function() {
+            $('#light').click(function() {
+                $('#container').css({
+                    'background': 'linear-gradient(to bottom, #f5f5f5, #e0e0e0)'
+                });
+                $('input[name="C"], input[name="AC"], input[name="π"], input[name="1/x"], input[name="log2"], input[name="log"]').css({
+                    'background-color': '#6C6C6C'
+                })
+            });
+            $('#dark').click(function() {
+                $('#container').css({
+                    'background': 'linear-gradient(145deg, #1e1e1e, #000000)'
+                });
+            });
+
+        });
+    </script>
 </html>
