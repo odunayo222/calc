@@ -4,12 +4,17 @@
     <head>
         <title>Calculator</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     </head>
     <body>
         <div class="theme">
             <input type="button" value="Dark" id="dark">
             <input type="button" value="Light" id="light">
+            <input type="button" value="Simple" id="hide-scientific">
+            <input type="button" value="Scientific" id="show-scientific">
         </div>
         <div class="container" id="container">
         <form name="calc">
@@ -19,38 +24,39 @@
             <table>
                 <tr>
                     <td><input style="font-family: Arial, Verdana, Geneva, Tahoma, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;" type="button" name="C" value="⌫" onclick="calc.display.value = calc.display.value.slice(0,calc.display.value.length-1)" id="c"></td>
-                    <td><input type="button" name="AC" value="AC" onclick="calc.display.value = ' ' " id="ac"></td>
+                    <td><input type="button" name="AC" value="AC" id="ac"></td>
+                    <td><button type="button" onclick="showHistory()" id="history"><i class="fa-solid fa-clock-rotate-left"></i></button></td>
                         
                 </tr>
                 <tr>
-                    <td><input type="button" name="|x|" value="|x|" onclick="calc.display.value = 'abs (' + calc.display.value+ ') = '+ Math.abs(calc.display.value)"></td>
-                    <td><input type="button" name="%" value="%" onclick="calc.display.value = calc.display.value/100"></td>
-                    <td><input type="button" name="^" value="^" onclick="calc.display.value += '**'"></td>
-                <td><input type="button" name="+/-" value="+/-" onclick="calc.display.value = calc.display.value*-1"></td>
+                    <td><input type="button" class="hideable" name="|x|" value="|x|" onclick="calc.display.value = 'abs (' + calc.display.value+ ') = '+ Math.abs(calc.display.value)"></td>
+                    <td><input type="button" class="hideable" name="%" value="%" onclick="calc.display.value = calc.display.value/100"></td>
+                    <td><input type="button" class="hideable" name="^" value="^" onclick="calc.display.value += '**'"></td>
+                <td><input type="button" class="hideable" name="+/-" value="+/-" onclick="calc.display.value = calc.display.value*-1"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" name="asin" value="asin" onclick="calc.display.value = (Math.asin(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
-                    <td><input type="button" name="acos" value="acos" onclick="calc.display.value = (Math.acos(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
-                    <td><input type="button" name="atan" value="atan" onclick="calc.display.value = (Math.atan(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
-                    <td><input type="button" name="π" value="π" onclick="calc.display.value = Math.PI * calc.display.value"></td>
+                    <td><input type="button" class="hideable" name="asin" value="asin" onclick="calc.display.value = (Math.asin(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="acos" value="acos" onclick="calc.display.value = (Math.acos(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="atan" value="atan" onclick="calc.display.value = (Math.atan(calc.display.value) * 180/Math.PI).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="π" value="π" onclick="calc.display.value = Math.PI * calc.display.value"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" name="sin" value="sin" onclick="calc.display.value =  (Math.sin(calc.display.value * Math.PI/180)).toFixed(9)"></td>
-                    <td><input type="button" name="cos" value="cos" onclick="calc.display.value = (Math.cos(calc.display.value * Math.PI/180)).toFixed(9)"></td>
-                    <td><input type="button" name="tan" value="tan" onclick="calc.display.value = (Math.tan(calc.display.value * Math.PI/180)).toFixed(9)"></td>
-                    <td><input type="button" name="1/x" value="1/x" onclick="calc.display.value =  1/calc.display.value"></td>
+                    <td><input type="button" class="hideable" name="sin" value="sin" onclick="calc.display.value =  (Math.sin(calc.display.value * Math.PI/180)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="cos" value="cos" onclick="calc.display.value = (Math.cos(calc.display.value * Math.PI/180)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="tan" value="tan" onclick="calc.display.value = (Math.tan(calc.display.value * Math.PI/180)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="1/x" value="1/x" onclick="calc.display.value =  1/calc.display.value"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" name="√x" value="√x" onclick="calc.display.value = (Math.sqrt(calc.display.value)).toFixed(9)"></td>
-                    <td><input type="button" name="x²" value="x²" onclick="calc.display.value = (Math.pow(calc.display.value, 2)).toFixed(9)"></td>
-                    <td><input type="button" name="∛x" value="∛x" onclick="calc.display.value = (Math.cbrt(calc.display.value)).toFixed(9)"></td>
-                    <td><input type="button" name="x³" value="x³" onclick="calc.display.value = (Math.pow(calc.display.value, 3)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="√x" value="√x" onclick="calc.display.value = (Math.sqrt(calc.display.value)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="x²" value="x²" onclick="calc.display.value = (Math.pow(calc.display.value, 2)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="∛x" value="∛x" onclick="calc.display.value = (Math.cbrt(calc.display.value)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="x³" value="x³" onclick="calc.display.value = (Math.pow(calc.display.value, 3)).toFixed(9)"></td>
                 </tr>
                 <tr>
-                    <td><input type="button" name="(" value="(" onclick="calc.display.value += '('"></td>
-                    <td><input type="button" name=")" value=")" onclick="calc.display.value += ')'"></td>
-                    <td><input type="button" name="log2" value="log2" onclick="calc.display.value = 'log2 ' + calc.display.value + ' = '+ (Math.log2(calc.display.value)).toFixed(9)"></td>
-                    <td><input type="button" name="log" value="log" onclick="calc.display.value = (Math.log10(calc.display.value)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="(" value="(" onclick="calc.display.value += '('"></td>
+                    <td><input type="button" class="hideable" name=")" value=")" onclick="calc.display.value += ')'"></td>
+                    <td><input type="button" class="hideable" name="log2" value="log2" onclick="calc.display.value = 'log2 ' + calc.display.value + ' = '+ (Math.log2(calc.display.value)).toFixed(9)"></td>
+                    <td><input type="button" class="hideable" name="log" value="log" onclick="calc.display.value = (Math.log10(calc.display.value)).toFixed(9)"></td>
                 </tr>
                 <tr>
                     <td><input type="button" name="1" value="1" onclick="calc.display.value += '1'"></td>
@@ -85,20 +91,60 @@
     </body>
     <script>
         $(document).ready(function() {
+            let previousValue = ''; // Variable to store the previous input value
+
+            // Event handler for the clear button
+            $('#ac').click(function() {
+                previousValue = $('#display').val(); // Save the current value before clearing it
+                $('#display').val(''); // Clear the input field
+            });
+
+            // Event handler for the restore button
+            $('#history').click(function() {
+                $('#display').val(previousValue); // Restore the previous value to the input field
+            });
+            $('#hide-scientific').click(function() {
+                $('.hideable').hide(); // This hides all elements with the class "hideable"
+            });
+            $('#show-scientific').click(function() {
+                $('.hideable').show(); // Shows all elements with the class "hideable"
+            });
             $('#light').click(function() {
                 $('#container').css({
                     'background': 'linear-gradient(to bottom, #f5f5f5, #e0e0e0)'
                 });
                 $('input[name="C"], input[name="AC"], input[name="π"], input[name="1/x"], input[name="log2"], input[name="log"]').css({
                     'background-color': '#6C6C6C'
+                });
+                $('#ac').css ({
+                    'background-color': 'red'
+                });
+                $('#c').css ({
+                    'background-color': '#FF6F61'
+                });
+                $('button').css({
+                    'background-color': 'green'
                 })
             });
             $('#dark').click(function() {
                 $('#container').css({
                     'background': 'linear-gradient(145deg, #1e1e1e, #000000)'
                 });
+                $('#ac').css ({
+                    'background-color': 'red'
+                });
+                $('#c').css ({
+                    'background-color': '#FF6F61'
+                });
+                $('button').css({
+                    'background-color': ''
+                })
+
             });
+            
 
         });
+        
+        
     </script>
 </html>
